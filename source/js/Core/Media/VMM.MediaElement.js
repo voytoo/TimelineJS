@@ -122,7 +122,19 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 				}
 			// IMAGE
 				if (m.type				==	"image") {
-					mediaElem			=	"<div class='media-image media-shadow'><img src='" + m.id + "' class='media-image'></div>";
+
+                    if (data.media_a) {
+                        mediaElem = "<a "+
+                            (data.media_a.href ? "href='"+data.media_a.href+"'" : "")+
+                            (data.media_a.class ? " class='"+data.media_a.class+"' " : "")+
+                            (data.media_a.onclick ? " onclick='"+data.media_a.onclick+"'" : "")+
+                            (data.media_a.target ? " target='"+data.media_a.target+"'" : "")+
+                            ">"+
+                        "<div class='media-image media-shadow'><img src='" + m.id + "' class='media-image'></div>" +
+                            "</a>";
+                    } else {
+                        mediaElem			=	"<div class='media-image media-shadow'><img src='" + m.id + "' class='media-image'></div>";
+                    }
 			// FLICKR
 				} else if (m.type		==	"flickr") {
 					//mediaElem			=	"<div class='media-image media-shadow' id='" + uid + "'>" + loading_messege + "</div>";

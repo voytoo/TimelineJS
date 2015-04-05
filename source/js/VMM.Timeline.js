@@ -595,10 +595,14 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 						_date.content			= "";
 						_date.tag				= data.date[i].tag;
 						_date.slug				= data.date[i].slug;
-						_date.uniqueid			= VMM.Util.unique_ID(7);
+                        if (data.date[i].id != "") {
+                            _date.uniqueid = data.date[i].id;
+                        } else {
+                            _date.uniqueid = VMM.Util.unique_ID(7);
+                        }
 						_date.classname			= data.date[i].classname;
-						
-						
+
+
 						_dates.push(_date);
 					} 
 					
